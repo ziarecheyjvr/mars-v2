@@ -24,14 +24,15 @@
     --red-dark:#b51217;
     --navy:#3d4557;
     --r-xl:28px; --r-lg:20px; --r-md:14px;
-    --wrap:1240px;
+    --pad:max(28px,calc((100vw - 1440px)/2));
+    --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
-  .shell{max-width:calc(var(--wrap) + 48px);margin:0 auto;padding:0 24px}
+  .shell{padding:0 14px;overflow-x:clip}
 
   /* buttons + labels */
   .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s;font-family:inherit}
@@ -51,13 +52,15 @@
   h3{font-size:22px;letter-spacing:-.02em;line-height:1.2}
 
   /* ---------- HERO ---------- */
-  .hero-wrap{padding:24px 0 0}
-  .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:min(760px,92vh);background:#cfd3d6 url("images/about-3.jpg") 70% 40%/cover no-repeat;display:flex;flex-direction:column}
-  .hero::before{content:"";position:absolute;inset:0;background:
+  .hero-wrap{padding:14px 0 0}
+  .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:calc(100vh - 28px);min-height:calc(100svh - 28px);background:#cfd3d6;display:flex;flex-direction:column;isolation:isolate}
+  .hero > .hero-bg{position:absolute;inset:-6% 0 0;z-index:-2;background:url("images/about-3.jpg") 70% 40%/cover no-repeat;animation:heroZoom 2.4s var(--ease) both;will-change:transform}
+  @keyframes heroZoom{from{transform:scale(1.12);filter:blur(6px)}to{transform:scale(1);filter:none}}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
       linear-gradient(90deg,rgba(246,246,244,.96) 0%,rgba(246,246,244,.86) 30%,rgba(246,246,244,.25) 58%,rgba(246,246,244,0) 75%),
       linear-gradient(180deg,rgba(246,246,244,.55) 0%,rgba(246,246,244,0) 22%);}
   .hero > *{position:relative}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 28px}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px var(--pad)}
   .brand img{height:38px;width:auto;border-radius:4px}
   .nav-links{display:flex;gap:34px;list-style:none}
   .nav-links a{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);opacity:.8;transition:opacity .2s}
@@ -67,7 +70,7 @@
   .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;content:""}
   .nav-toggle span::before{position:absolute;top:-6px}.nav-toggle span::after{position:absolute;top:6px}
 
-  .hero-body{flex:1;display:grid;grid-template-columns:1.4fr .6fr;padding:40px 28px 28px;gap:24px}
+  .hero-body{flex:1;display:grid;grid-template-columns:1.4fr .6fr;padding:40px var(--pad) 28px;gap:24px}
   .hero-copy{display:flex;flex-direction:column;justify-content:space-between;gap:40px;max-width:760px}
   .hero h1{font-size:clamp(48px,6.6vw,96px);font-weight:500}
   .hero h1 em{font-style:normal;color:var(--red)}
@@ -86,7 +89,7 @@
   .float-card span{font-size:14px;color:var(--ink-3)}
 
   /* ---------- DARK BAND ---------- */
-  .dark{background:var(--dark);color:#fff;border-radius:var(--r-xl);margin-top:14px;padding:72px 28px}
+  .dark{background:var(--dark);color:#fff;border-radius:var(--r-xl);margin-top:14px;padding:96px var(--pad)}
   .about-head{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:28px;align-items:center}
   .about-head .img{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3}
   .about-head .img img{width:100%;height:100%;object-fit:cover}
@@ -113,7 +116,7 @@
   .stat.accent span{color:rgba(255,255,255,.8)}
 
   /* ---------- SERVICES ---------- */
-  .light{background:var(--card);border-radius:var(--r-xl);margin-top:14px;padding:72px 28px}
+  .light{background:var(--card);border-radius:var(--r-xl);margin-top:14px;padding:96px var(--pad)}
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 28px}
   .tab{height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:transparent;font:600 13px/1 "Inter Tight",sans-serif;letter-spacing:.04em;cursor:pointer;color:var(--ink-2);transition:all .2s}
   .tab:hover{border-color:var(--ink)}
@@ -198,7 +201,7 @@
   .map iframe{width:100%;height:100%;min-height:240px;border:0;display:block;filter:grayscale(.85) contrast(1.05)}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--dark);color:#fff;border-radius:var(--r-xl) var(--r-xl) 0 0;margin-top:14px;padding:56px 28px 28px}
+  footer{background:var(--dark);color:#fff;border-radius:var(--r-xl) var(--r-xl) 0 0;margin-top:14px;padding:72px var(--pad) 28px}
   .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--dark-line)}
   .foot-top .big{font-size:clamp(30px,4vw,54px);letter-spacing:-.04em;line-height:1.05;max-width:620px}
   .foot-top .big a{color:var(--red)}
@@ -210,10 +213,77 @@
   .socials a:hover{background:rgba(255,255,255,.1)}
   .socials svg{width:18px;height:18px;fill:#fff}
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  /* ---------- MARQUEE ---------- */
+  .marquee{margin-top:14px;background:var(--red);color:#fff;border-radius:var(--r-xl);overflow:hidden;padding:22px 0;display:flex}
+  .marquee-track{display:flex;flex:none;gap:48px;padding-right:48px;animation:marquee 32s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee span{font-size:clamp(22px,2.6vw,34px);font-weight:500;letter-spacing:-.03em;white-space:nowrap;display:flex;align-items:center;gap:48px}
+  .marquee span::after{content:"✦";font-size:.6em;opacity:.7}
+  @keyframes marquee{to{transform:translateX(-100%)}}
+
+  /* ---------- STICKY BAR ---------- */
+  .bar{position:fixed;top:12px;left:50%;z-index:50;display:flex;align-items:center;gap:20px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 12px 40px -12px rgba(0,0,0,.25);transform:translate(-50%,-140%);transition:transform .5s var(--ease)}
+  .bar.show{transform:translate(-50%,0)}
+  .bar img{height:26px;border-radius:3px}
+  .bar ul{display:flex;gap:22px;list-style:none}
+  .bar ul a{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+  .bar ul a:hover{opacity:1}
+  .bar .btn{height:38px;padding:0 16px;font-size:11px}
+  @media (max-width:820px){.bar ul{display:none}}
+
+  /* ---------- MOTION ---------- */
+  /* hero load sequence */
+  .line{display:block;overflow:hidden;padding-bottom:.06em}
+  .line > span{display:inline-block;animation:lineUp 1.1s var(--ease) both;animation-delay:calc(.25s + var(--i,0) * .12s)}
+  @keyframes lineUp{from{transform:translateY(105%)}to{transform:none}}
+  .load{animation:fadeUp .9s var(--ease) both;animation-delay:var(--d,.6s)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .load-pop{animation:pop 1s var(--ease) both;animation-delay:var(--d,1s)}
+  @keyframes pop{from{opacity:0;transform:translateY(30px) scale(.92)}to{opacity:1;transform:none}}
+  .load-pop.bob{animation:pop 1s var(--ease) var(--d,1s) both,bob 6s ease-in-out var(--bd,2s) infinite}
+  @keyframes bob{50%{transform:translateY(-8px)}}
+
+  /* scroll reveals (stagger via --i set in JS) */
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+  .reveal.zoom{transform:scale(.94)}
+  .reveal.left{transform:translateX(-40px)}
+  .reveal.right{transform:translateX(40px)}
+  @media (max-width:720px){.reveal.left,.reveal.right{transform:translateY(32px)}}
   .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+  .clip{clip-path:inset(12% 12% 12% 12% round var(--r-lg));transition:clip-path 1.2s var(--ease)}
+  .clip.in{clip-path:inset(0 0 0 0 round var(--r-lg))}
+  .clip img{transform:scale(1.2);transition:transform 1.6s var(--ease)}
+  .clip.in img{transform:scale(1)}
+
+  /* hovers */
+  .why-item .ic{transition:background .3s,transform .4s var(--ease)}
+  .why-item:hover .ic{background:var(--red);transform:rotate(-8deg) scale(1.08)}
+  .value{transition:background .35s,border-color .35s,transform .45s var(--ease)}
+  .value:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3);transform:translateY(-6px)}
+  .value .num{transition:color .3s}.value:hover .num{color:var(--red)}
+  .extra,.stat,.info-card{transition:transform .45s var(--ease),box-shadow .45s}
+  .extra:hover,.stat:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(0,0,0,.25)}
+  .about-gallery,.panel .media{overflow:hidden}
+  .about-gallery img,.panel .media img,.about-head .img img{transition:transform 1s var(--ease)}
+  .about-gallery img:hover,.panel .media:hover img,.about-head .img:hover img{transform:scale(1.05)}
+  .btn .arrow{display:inline-block;transition:transform .3s var(--ease)}
+  .btn:hover .arrow{transform:translateX(4px)}
+  .info-links a span:last-child{transition:transform .3s var(--ease)}
+  .info-links a:hover span:last-child{transform:translateX(6px)}
+
+  /* tab panel switch */
+  .panel.enter .media{animation:pop .7s var(--ease) both}
+  .panel.enter .text > *{animation:fadeUp .7s var(--ease) both}
+  .panel.enter .text > *:nth-child(2){animation-delay:.06s}
+  .panel.enter .text > *:nth-child(3){animation-delay:.12s}
+  .panel.enter .text > *:nth-child(4){animation-delay:.18s}
+  .panel.enter .text > *:nth-child(5){animation-delay:.24s}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal,.clip,.clip img{opacity:1;transform:none;clip-path:none}
+    html{scroll-behavior:auto}
+  }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:1020px){
@@ -262,12 +332,23 @@
 </head>
 <body>
 
+<div class="bar" aria-hidden="true" id="bar">
+  <a href="#home" tabindex="-1"><img src="images/logo.png" alt=""></a>
+  <ul>
+    <li><a href="#about" tabindex="-1">About us</a></li>
+    <li><a href="#services" tabindex="-1">Services</a></li>
+    <li><a href="#location" tabindex="-1">Location</a></li>
+  </ul>
+  <a href="#estimate" class="btn btn-red" tabindex="-1">Schedule a repair</a>
+</div>
+
 <div class="shell">
 
   <!-- HERO -->
   <div class="hero-wrap" id="home">
     <header class="hero">
-      <nav class="nav" aria-label="Main">
+      <div class="hero-bg" id="hero-bg"></div>
+      <nav class="nav load" style="--d:.1s" aria-label="Main">
         <a href="#home" class="brand" aria-label="Matts Auto Repair Services home"><img src="images/logo.png" alt="MARS – Matt's Auto Repair Services"></a>
         <ul class="nav-links">
           <li><a href="#about">About us</a></li>
@@ -282,24 +363,24 @@
       <div class="hero-body">
         <div class="hero-copy">
           <div>
-            <h1>Matts Auto Repair <em>Services</em></h1>
-            <div class="hero-actions">
-              <a href="#estimate" class="btn btn-primary">Schedule a repair</a>
+            <h1><span class="line"><span style="--i:0">Matts Auto Repair</span></span><span class="line"><span style="--i:1"><em>Services</em></span></span></h1>
+            <div class="hero-actions load" style="--d:.75s">
+              <a href="#estimate" class="btn btn-primary">Schedule a repair <span class="arrow">→</span></a>
               <a href="tel:01279653494" class="btn btn-ghost">Call us</a>
             </div>
           </div>
-          <p class="hero-foot">A family run local independent garage located in Bishops Stortford town centre</p>
+          <p class="hero-foot load" style="--d:.95s">A family run local independent garage located in Bishops Stortford town centre</p>
         </div>
 
         <div class="hero-side">
-          <div class="expert-chip">
+          <div class="expert-chip load-pop bob" style="--d:1.05s;--bd:2s">
             <div class="avatars">
               <img src="images/about-1.jpg" alt="" style="object-position:35% 20%">
               <img src="images/about-3.jpg" alt="" style="object-position:62% 30%">
             </div>
             RMI approved<br>DVSA test site 10659
           </div>
-          <div class="float-card">
+          <div class="float-card load-pop bob" style="--d:1.25s;--bd:2.4s">
             <div class="thumb">
               <img src="images/about-2.jpg" alt="" style="object-position:60% 40%">
               <span class="badge">5★</span>
@@ -317,13 +398,13 @@
   <!-- WHY MARS -->
   <section class="dark" id="about">
     <div class="about-head">
-      <div class="img reveal"><img src="images/about-1.jpg" alt="MARS technician working under a car bonnet"></div>
+      <div class="img clip"><img src="images/about-1.jpg" alt="MARS technician working under a car bonnet"></div>
       <div class="center reveal">
         <span class="pill">Why MAR's?</span>
         <h2>A staple of the Bishops Stortford community for the past ten years</h2>
         <p>Building a sterling reputation based on word-of-mouth referrals and loyal customers.</p>
       </div>
-      <div class="img reveal"><img src="images/hero.jpg" alt="MARS van outside the Bryan Road workshop"></div>
+      <div class="img clip"><img src="images/hero.jpg" alt="MARS van outside the Bryan Road workshop"></div>
     </div>
 
     <div class="why">
@@ -362,15 +443,21 @@
 
   <!-- STATS -->
   <section class="stats" aria-label="Experience">
-    <div class="stat accent reveal"><b>10</b><span>Years</span></div>
-    <div class="stat reveal"><b>1</b><span>Beautiful workshop</span></div>
-    <div class="stat reveal"><b>1000's</b><span>Happy customers</span></div>
-    <div class="stat reveal"><b>1000's</b><span>MOT's</span></div>
+    <div class="stat accent reveal"><b data-count="10">10</b><span>Years</span></div>
+    <div class="stat reveal"><b data-count="1">1</b><span>Beautiful workshop</span></div>
+    <div class="stat reveal"><b data-count="1000" data-suffix="'s">1000's</b><span>Happy customers</span></div>
+    <div class="stat reveal"><b data-count="1000" data-suffix="'s">1000's</b><span>MOT's</span></div>
   </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track"><span>MOT's</span><span>General Servicing</span><span>All Repairs</span><span>Tyres</span><span>Wheel Alignment</span><span>Air Conditioning</span><span>Diagnostics</span><span>Recovery</span></div>
+    <div class="marquee-track"><span>MOT's</span><span>General Servicing</span><span>All Repairs</span><span>Tyres</span><span>Wheel Alignment</span><span>Air Conditioning</span><span>Diagnostics</span><span>Recovery</span></div>
+  </div>
 
   <!-- SERVICES -->
   <section class="light" id="services">
-    <div class="section-top">
+    <div class="section-top reveal">
       <div>
         <p class="eyebrow">Our services</p>
         <h2 style="margin-top:14px">MOT's, servicing,<br>repairs &amp; tyres</h2>
@@ -392,7 +479,7 @@
         <p>To ensure that your vehicle meets safety and environmental standards, it is essential to have it undergo an MOT test. This test examines various aspects of your vehicle to ensure it meets the required standards.</p>
         <p>At MARS, we have five highly trained MOT testers who receive yearly training to keep up to date with the latest testing methods. We also recently installed a state-of-the-art one-man test bay to further enhance our testing capabilities. As a DVSA-approved class 4 test site (Test Site Number: 10659), we offer MOT tests starting from just £49.50.</p>
         <p>To make things more convenient for you, we provide waiting slots that can be booked in advance. Our location near the town centre also allows you to go shopping while your test is being carried out. Additionally, we offer FREE MOT retests to ensure that any issues that arise are promptly addressed.</p>
-        <a href="#estimate" class="btn btn-primary">Book your MOT</a>
+        <a href="#estimate" class="btn btn-primary">Book your MOT <span class="arrow">→</span></a>
       </div>
     </div>
 
@@ -464,22 +551,22 @@
 
   <!-- ABOUT -->
   <section class="about">
-    <div class="about-copy reveal">
+    <div class="about-copy reveal left">
       <p class="eyebrow">About us</p>
       <p class="lead">Matts Auto Repair Services is a family-run independent garage situated in the heart of Bishops Stortford, driven by a strong passion for quality service. Our premises on Bryan Road CM23 2HR have been a staple of the community for the past ten years, building a sterling reputation based on word-of-mouth referrals and loyal customers.</p>
       <p>Our team of four highly skilled technicians possesses over 95 years of combined experience in the motor trade, including those who have attained the prestigious master technician level with Ford and Peugeot, spanning across multiple well-known brands.</p>
       <p>We pride ourselves on being an approved MOT station by the DVSA, making use of cutting-edge testing technology to ensure thorough on-site inspections without the need for external testing. Every vehicle that comes through our doors is treated with the utmost care and respect, as if it were our very own. Our many glowing 5-star customer reviews on numerous platforms serve as a testament to our unwavering commitment to excellence.</p>
     </div>
     <div class="about-gallery">
-      <img class="reveal" src="images/about-2.jpg" alt="Two MARS technicians inspecting a car on a lift" style="object-position:55% center">
-      <img class="reveal" src="images/home-2.jpg" alt="Technician running diagnostics inside a car">
-      <img class="reveal" src="images/home-3.jpg" alt="Close-up of a repair on an electrical component">
+      <img class="reveal zoom" src="images/about-2.jpg" alt="Two MARS technicians inspecting a car on a lift" style="object-position:55% center">
+      <img class="reveal zoom" src="images/home-2.jpg" alt="Technician running diagnostics inside a car">
+      <img class="reveal zoom" src="images/home-3.jpg" alt="Close-up of a repair on an electrical component">
     </div>
   </section>
 
   <!-- CORE VALUES -->
   <section class="dark">
-    <div class="section-top">
+    <div class="section-top reveal">
       <div>
         <span class="pill">Our core values</span>
         <h2 style="margin-top:20px">What drives every job<br>we sign off</h2>
@@ -507,7 +594,7 @@
 
   <!-- ESTIMATE + CONTACT -->
   <section class="contact" id="location">
-    <div class="form-card reveal" id="estimate">
+    <div class="form-card reveal left" id="estimate">
       <span class="pill">Quick estimate</span>
       <h2>Too busy to come in? Want to book your MOT?</h2>
       <p>Fill in the form and we’ll come right back to you.</p>
@@ -522,14 +609,14 @@
           <label class="upload"><input type="file" name="image" accept="image/*" id="f-img"><span class="btn btn-ghost-dark">Upload</span><span id="f-img-name">Add a photo of the issue (optional)</span></label>
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn btn-red">Send message</button>
+          <button type="submit" class="btn btn-red">Send message <span class="arrow">→</span></button>
           <span class="form-msg" id="form-msg" role="status"></span>
         </div>
       </form>
     </div>
 
     <div class="info">
-      <div class="info-card reveal">
+      <div class="info-card reveal right">
         <h3>Contact us</h3>
         <address>Matts Auto Repair Services<br>Bryan Road, Bishops Stortford<br>CM23 2HR</address>
         <div class="info-links">
@@ -537,14 +624,14 @@
           <a href="mailto:info@mattsautorepairservices.co.uk"><span>info@mattsautorepairservices.co.uk</span><span>→</span></a>
         </div>
       </div>
-      <div class="info-card reveal">
+      <div class="info-card reveal right">
         <h3>Opening hours <span class="status" id="status">—</span></h3>
         <div class="hours">
           <div><span>Mon - Fri</span><span>8:00 am - 5:30 pm</span></div>
           <div><span>Sat - Sun</span><span class="closed">Closed</span></div>
         </div>
       </div>
-      <div class="map reveal">
+      <div class="map reveal right">
         <iframe title="Map showing Matts Auto Repair Services on Bryan Road, Bishops Stortford" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Matts+Auto+Repair+Services,+Bryan+Road,+Bishops+Stortford+CM23+2HR&z=15&output=embed"></iframe>
       </div>
     </div>
@@ -553,7 +640,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="foot-top">
-      <p class="big">Family run, local and independent. Call us on <a href="tel:01279653494">01279 653494</a></p>
+      <p class="big reveal">Family run, local and independent. Call us on <a href="tel:01279653494">01279 653494</a></p>
       <ul class="foot-nav">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About us</a></li>
@@ -591,7 +678,10 @@
     tabs.forEach(t => {
       const on = t === tab;
       t.setAttribute('aria-selected', on);
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      const panel = document.getElementById(t.getAttribute('aria-controls'));
+      panel.hidden = !on;
+      panel.classList.remove('enter');
+      if (on) { void panel.offsetWidth; panel.classList.add('enter'); }
     });
   }));
 
@@ -625,11 +715,44 @@
     document.getElementById('f-img-name').textContent = 'Add a photo of the issue (optional)';
   });
 
-  // reveal on scroll
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // count up stats
+  function countUp(el) {
+    const end = +el.dataset.count, suffix = el.dataset.suffix || '', t0 = performance.now(), dur = 1600;
+    if (end < 2 || reduced) return;
+    (function tick(t) {
+      const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+      el.textContent = Math.round(end * e) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  // reveal on scroll, staggered among siblings
+  document.querySelectorAll('.reveal').forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    el.style.setProperty('--i', sibs.indexOf(el) % 6);
+  });
   const io = new IntersectionObserver(entries => entries.forEach(en => {
-    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-  }), { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in');
+    en.target.querySelectorAll('[data-count]').forEach(countUp);
+    io.unobserve(en.target);
+  }), { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .clip').forEach(el => io.observe(el));
+
+  // sticky bar + hero parallax
+  const bar = document.getElementById('bar'), heroBg = document.getElementById('hero-bg'), hero = document.querySelector('.hero');
+  let ticking = false;
+  function onScroll() {
+    const y = scrollY;
+    bar.classList.toggle('show', y > hero.offsetHeight * .7);
+    if (!reduced && y < hero.offsetHeight) heroBg.style.transform = `translateY(${y * .25}px) scale(${1 + y / 4000})`;
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  // let the CSS intro zoom finish before parallax takes over the transform
+  heroBg.addEventListener('animationend', () => { heroBg.style.animation = 'none'; onScroll(); });
 </script>
 </body>
 </html>
