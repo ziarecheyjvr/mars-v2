@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Car Mechanics | MATTS AUTO REPAIR SERVICES | Bishops Stortford</title>
+<meta name="description" content="Matts Auto Repair Services is a family run local independent garage located in Bishops Stortford town centre. MOTs, servicing, repairs and tyres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#e9ebee;
+    --card:#f6f6f4;
+    --white:#ffffff;
+    --ink:#161718;
+    --ink-2:#4a4d52;
+    --ink-3:#7b7f86;
+    --line:rgba(22,23,24,.1);
+    --dark:#2a2b2d;
+    --dark-2:#343538;
+    --dark-line:rgba(255,255,255,.14);
+    --red:#d7191f;
+    --red-dark:#b51217;
+    --navy:#3d4557;
+    --r-xl:28px; --r-lg:20px; --r-md:14px;
+    --wrap:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .shell{max-width:calc(var(--wrap) + 48px);margin:0 auto;padding:0 24px}
+
+  /* buttons + labels */
+  .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s;font-family:inherit}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--ink)}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-dark)}
+  .btn-ghost{border-color:var(--line);background:rgba(255,255,255,.55);backdrop-filter:blur(8px);color:var(--ink)}
+  .btn-ghost:hover{background:#fff}
+  .btn-ghost-dark{border-color:var(--dark-line);color:#fff}
+  .btn-ghost-dark:hover{background:rgba(255,255,255,.08)}
+  .pill{display:inline-block;padding:6px 14px;border-radius:999px;border:1px dashed currentColor;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  h1,h2,h3{font-weight:500;letter-spacing:-.035em;line-height:1.02}
+  h2{font-size:clamp(32px,4.2vw,52px)}
+  h3{font-size:22px;letter-spacing:-.02em;line-height:1.2}
+
+  /* ---------- HERO ---------- */
+  .hero-wrap{padding:24px 0 0}
+  .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:min(760px,92vh);background:#cfd3d6 url("images/about-3.jpg") 70% 40%/cover no-repeat;display:flex;flex-direction:column}
+  .hero::before{content:"";position:absolute;inset:0;background:
+      linear-gradient(90deg,rgba(246,246,244,.96) 0%,rgba(246,246,244,.86) 30%,rgba(246,246,244,.25) 58%,rgba(246,246,244,0) 75%),
+      linear-gradient(180deg,rgba(246,246,244,.55) 0%,rgba(246,246,244,0) 22%);}
+  .hero > *{position:relative}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 28px}
+  .brand img{height:38px;width:auto;border-radius:4px}
+  .nav-links{display:flex;gap:34px;list-style:none}
+  .nav-links a{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);opacity:.8;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  .nav-cta{height:40px;padding:0 18px;font-size:12px}
+  .nav-toggle{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.7);cursor:pointer;align-items:center;justify-content:center}
+  .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;content:""}
+  .nav-toggle span::before{position:absolute;top:-6px}.nav-toggle span::after{position:absolute;top:6px}
+
+  .hero-body{flex:1;display:grid;grid-template-columns:1.4fr .6fr;padding:40px 28px 28px;gap:24px}
+  .hero-copy{display:flex;flex-direction:column;justify-content:space-between;gap:40px;max-width:760px}
+  .hero h1{font-size:clamp(48px,6.6vw,96px);font-weight:500}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  .hero-foot{font-size:15px;color:var(--ink-2);max-width:330px}
+  .hero-side{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;gap:24px}
+  .expert-chip{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.3;color:var(--ink);background:rgba(255,255,255,.6);backdrop-filter:blur(10px);padding:16px 20px;border-radius:var(--r-lg)}
+  .avatars{display:flex}
+  .avatars img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+  .avatars img+img{margin-left:-12px}
+  .float-card{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--r-lg);padding:14px 26px 14px 14px;box-shadow:0 20px 50px -20px rgba(0,0,0,.25)}
+  .float-card .thumb{position:relative}
+  .float-card .thumb img{width:84px;height:84px;border-radius:50%;object-fit:cover}
+  .float-card .badge{position:absolute;top:-4px;right:-10px;background:var(--navy);color:#fff;font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;border:2px solid #fff}
+  .float-card strong{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .float-card span{font-size:14px;color:var(--ink-3)}
+
+  /* ---------- DARK BAND ---------- */
+  .dark{background:var(--dark);color:#fff;border-radius:var(--r-xl);margin-top:14px;padding:72px 28px}
+  .about-head{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:28px;align-items:center}
+  .about-head .img{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3}
+  .about-head .img img{width:100%;height:100%;object-fit:cover}
+  .about-head .img:last-child{align-self:end}
+  .about-head .center{text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+  .about-head h2{font-size:clamp(28px,3.4vw,44px);line-height:1.1}
+  .about-head p{color:rgba(255,255,255,.7);font-size:16px;max-width:520px}
+
+  .why{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--dark-line)}
+  .why-item{padding:32px 28px 32px 0;border-bottom:1px solid var(--dark-line)}
+  .why-item:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--dark-line)}
+  .why-item .ic{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;margin-bottom:22px}
+  .why-item .ic svg{width:20px;height:20px;stroke:#fff}
+  .why-item h3{margin-bottom:8px}
+  .why-item p{color:rgba(255,255,255,.62);font-size:15px}
+  .section-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+  .stat{background:var(--card);border-radius:var(--r-lg);padding:28px}
+  .stat b{display:block;font-size:clamp(40px,4.6vw,64px);font-weight:500;letter-spacing:-.04em;line-height:1}
+  .stat span{display:block;margin-top:10px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+  .stat.accent{background:var(--red);color:#fff}
+  .stat.accent span{color:rgba(255,255,255,.8)}
+
+  /* ---------- SERVICES ---------- */
+  .light{background:var(--card);border-radius:var(--r-xl);margin-top:14px;padding:72px 28px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 28px}
+  .tab{height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:transparent;font:600 13px/1 "Inter Tight",sans-serif;letter-spacing:.04em;cursor:pointer;color:var(--ink-2);transition:all .2s}
+  .tab:hover{border-color:var(--ink)}
+  .tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .panel{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:stretch}
+  .panel[hidden]{display:none}
+  .panel .media{border-radius:var(--r-lg);overflow:hidden;min-height:420px;position:relative}
+  .panel .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .panel .price{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:var(--r-md);padding:12px 18px}
+  .panel .price small{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .panel .price b{font-size:28px;font-weight:600;letter-spacing:-.03em}
+  .panel .text{display:flex;flex-direction:column;gap:16px;padding:8px 0}
+  .panel .text h3{font-size:clamp(26px,2.6vw,36px);letter-spacing:-.03em;line-height:1.1}
+  .panel .text p{color:var(--ink-2);font-size:16px}
+  .panel .text .btn{align-self:flex-start;margin-top:8px}
+
+  .extras{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+  .extra{background:#fff;border-radius:var(--r-lg);padding:26px;display:flex;flex-direction:column;gap:12px}
+  .extra .tag{align-self:flex-start;font-size:12px;font-weight:600;background:var(--bg);border-radius:999px;padding:5px 12px}
+  .extra h3{font-size:20px}
+  .extra p,.extra li{color:var(--ink-2);font-size:14.5px}
+  .extra ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .extra li{padding-left:18px;position:relative}
+  .extra li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--red)}
+
+  /* ---------- ABOUT ---------- */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .about-copy{background:var(--white);border-radius:var(--r-xl);padding:56px 48px;display:flex;flex-direction:column;gap:20px}
+  .about-copy p{color:var(--ink-2);font-size:16.5px}
+  .about-copy .lead{color:var(--ink);font-size:clamp(20px,1.9vw,25px);letter-spacing:-.02em;line-height:1.35}
+  .about-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px}
+  .about-gallery img{width:100%;height:100%;object-fit:cover;border-radius:var(--r-xl);min-height:220px}
+  .about-gallery img:first-child{grid-row:span 2}
+
+  /* ---------- VALUES ---------- */
+  .values{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+  .value{border:1px solid var(--dark-line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:12px;min-height:280px}
+  .value .num{font-size:13px;font-weight:600;color:rgba(255,255,255,.45)}
+  .value h3{margin-top:56px}
+  .value p{color:rgba(255,255,255,.62);font-size:15px}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--white);border-radius:var(--r-xl);padding:40px 48px;margin-top:14px}
+  .reviews .g{display:flex;align-items:center;gap:18px}
+  .reviews .g svg{width:44px;height:44px;flex:none}
+  .reviews .stars{color:#f5b301;font-size:20px;letter-spacing:2px}
+  .reviews h3{font-size:clamp(22px,2.2vw,30px);letter-spacing:-.03em}
+
+  /* ---------- ESTIMATE + CONTACT ---------- */
+  .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}
+  .form-card{background:var(--dark);color:#fff;border-radius:var(--r-xl);padding:56px 48px}
+  .form-card h2{margin:18px 0 10px}
+  .form-card > p{color:rgba(255,255,255,.7);margin-bottom:32px}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .field input,.field textarea{font:inherit;font-size:15px;color:#fff;background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r-md);padding:14px 16px;outline:none;transition:border-color .2s}
+  .field input:focus,.field textarea:focus{border-color:rgba(255,255,255,.5)}
+  .field textarea{min-height:120px;resize:vertical}
+  .upload{display:flex;align-items:center;gap:14px;border:1px dashed var(--dark-line);border-radius:var(--r-md);padding:14px 16px;cursor:pointer;color:rgba(255,255,255,.7);font-size:14px}
+  .upload input{display:none}
+  .upload .btn{height:36px;padding:0 14px;font-size:11px;pointer-events:none}
+  .form-actions{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:6px}
+  .form-msg{font-size:14px;color:rgba(255,255,255,.75)}
+
+  .info{display:flex;flex-direction:column;gap:14px}
+  .info-card{background:var(--white);border-radius:var(--r-xl);padding:36px}
+  .info-card h3{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+  .info-card address{font-style:normal;font-size:20px;letter-spacing:-.02em;line-height:1.4}
+  .info-links{display:flex;flex-direction:column;gap:6px;margin-top:18px;font-size:16px}
+  .info-links a{border-bottom:1px solid var(--line);padding-bottom:6px;display:flex;justify-content:space-between}
+  .info-links a:hover{color:var(--red)}
+  .hours{display:flex;flex-direction:column}
+  .hours div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .hours div:last-child{border:none}
+  .hours .closed{color:var(--ink-3)}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--bg);border-radius:999px;padding:6px 12px;margin-left:10px;vertical-align:middle;color:var(--ink-2)}
+  .status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink-3)}
+  .status.open::before{background:#1f9d55}
+  .map{border-radius:var(--r-xl);overflow:hidden;flex:1;min-height:240px;background:#d8dbde}
+  .map iframe{width:100%;height:100%;min-height:240px;border:0;display:block;filter:grayscale(.85) contrast(1.05)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--dark);color:#fff;border-radius:var(--r-xl) var(--r-xl) 0 0;margin-top:14px;padding:56px 28px 28px}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--dark-line)}
+  .foot-top .big{font-size:clamp(30px,4vw,54px);letter-spacing:-.04em;line-height:1.05;max-width:620px}
+  .foot-top .big a{color:var(--red)}
+  .foot-nav{display:flex;gap:28px;flex-wrap:wrap;list-style:none;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .foot-nav a{opacity:.75}.foot-nav a:hover{opacity:1}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;font-size:14px;color:rgba(255,255,255,.6)}
+  .socials{display:flex;gap:10px}
+  .socials a{width:42px;height:42px;border-radius:50%;border:1px solid var(--dark-line);display:grid;place-items:center;transition:background .2s}
+  .socials a:hover{background:rgba(255,255,255,.1)}
+  .socials svg{width:18px;height:18px;fill:#fff}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1020px){
+    .nav-links,.nav-cta{display:none}
+    .nav-toggle{display:inline-flex}
+    .nav.open{flex-wrap:wrap}
+    .nav.open .nav-links{display:flex;flex-direction:column;gap:0;width:100%;order:3;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:var(--r-lg);padding:8px 18px}
+    .nav.open .nav-links a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+    .nav.open .nav-links li:last-child a{border:none}
+    .about-head{grid-template-columns:1fr 1fr}
+    .about-head .center{grid-column:1/-1;order:-1}
+    .why{grid-template-columns:1fr 1fr}
+    .why-item,.why-item:not(:nth-child(3n+1)){padding:28px 24px;border-left:none}
+    .why-item:nth-child(even){border-left:1px solid var(--dark-line)}
+    .stats,.extras,.values{grid-template-columns:1fr 1fr}
+    .panel,.about,.contact{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    .shell{padding:0 12px}
+    .hero-wrap{padding-top:12px}
+    .hero{min-height:auto;background-position:62% center}
+    .hero::before{background:linear-gradient(180deg,rgba(246,246,244,.95) 0%,rgba(246,246,244,.82) 48%,rgba(246,246,244,.1) 78%)}
+    .nav{padding:16px}
+    .hero-body{grid-template-columns:1fr;padding:24px 16px 16px}
+    .hero-side{align-items:stretch;padding-top:120px}
+    .expert-chip{display:none}
+    .float-card{align-self:flex-start}
+    .dark,.light{padding:48px 16px}
+    .about-head{grid-template-columns:1fr}
+    .about-head .img:last-child{display:none}
+    .why{grid-template-columns:1fr}
+    .why-item,.why-item:nth-child(even),.why-item:not(:nth-child(3n+1)){padding:24px 0;border-left:none}
+    .stats{gap:10px}
+    .stat{padding:20px}
+    .extras,.values{grid-template-columns:1fr}
+    .value{min-height:200px}
+    .panel .media{min-height:280px}
+    .about-copy,.form-card{padding:36px 20px}
+    .about-gallery img{min-height:160px}
+    .reviews{padding:28px 20px}
+    form{grid-template-columns:1fr}
+    .info-card{padding:28px 20px}
+    footer{padding:44px 16px 24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- HERO -->
+  <div class="hero-wrap" id="home">
+    <header class="hero">
+      <nav class="nav" aria-label="Main">
+        <a href="#home" class="brand" aria-label="Matts Auto Repair Services home"><img src="images/logo.png" alt="MARS – Matt's Auto Repair Services"></a>
+        <ul class="nav-links">
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#estimate">Contact us</a></li>
+        </ul>
+        <a href="tel:01279653494" class="btn btn-ghost nav-cta">01279 653494</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+      </nav>
+
+      <div class="hero-body">
+        <div class="hero-copy">
+          <div>
+            <h1>Matts Auto Repair <em>Services</em></h1>
+            <div class="hero-actions">
+              <a href="#estimate" class="btn btn-primary">Schedule a repair</a>
+              <a href="tel:01279653494" class="btn btn-ghost">Call us</a>
+            </div>
+          </div>
+          <p class="hero-foot">A family run local independent garage located in Bishops Stortford town centre</p>
+        </div>
+
+        <div class="hero-side">
+          <div class="expert-chip">
+            <div class="avatars">
+              <img src="images/about-1.jpg" alt="" style="object-position:35% 20%">
+              <img src="images/about-3.jpg" alt="" style="object-position:62% 30%">
+            </div>
+            RMI approved<br>DVSA test site 10659
+          </div>
+          <div class="float-card">
+            <div class="thumb">
+              <img src="images/about-2.jpg" alt="" style="object-position:60% 40%">
+              <span class="badge">5★</span>
+            </div>
+            <div>
+              <strong>1000's Happy Customers</strong>
+              <span>Bishops Stortford</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- WHY MARS -->
+  <section class="dark" id="about">
+    <div class="about-head">
+      <div class="img reveal"><img src="images/about-1.jpg" alt="MARS technician working under a car bonnet"></div>
+      <div class="center reveal">
+        <span class="pill">Why MAR's?</span>
+        <h2>A staple of the Bishops Stortford community for the past ten years</h2>
+        <p>Building a sterling reputation based on word-of-mouth referrals and loyal customers.</p>
+      </div>
+      <div class="img reveal"><img src="images/hero.jpg" alt="MARS van outside the Bryan Road workshop"></div>
+    </div>
+
+    <div class="why">
+      <div class="why-item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Trustworthy</h3>
+        <p>As local Bishop's Stortford mechanics our reputation has grown throughout the years.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 12l3-3 2 2 4-4"/></svg></div>
+        <h3>Modern Technology</h3>
+        <p>We have the latest equipment in the industry which help us get the best and accurate results for every customer.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Local</h3>
+        <p>We are a local business that is here to serve the community.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 8.5A2.5 2.5 0 0 0 10 10v5.5M8.5 12.5h4M8.5 15.5h7"/></svg></div>
+        <h3>Price Competitive</h3>
+        <p>You will not find a better car mechanics in Bishop's Stortford for the price and service.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Secure Location</h3>
+        <p>Based just outside the town centre of Bishop's Stortford our car garage site is large and secure.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"/></svg></div>
+        <h3>RMI Approval</h3>
+        <p>We are Retail Motor Industry approved so you know you are in safe hands.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="Experience">
+    <div class="stat accent reveal"><b>10</b><span>Years</span></div>
+    <div class="stat reveal"><b>1</b><span>Beautiful workshop</span></div>
+    <div class="stat reveal"><b>1000's</b><span>Happy customers</span></div>
+    <div class="stat reveal"><b>1000's</b><span>MOT's</span></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="light" id="services">
+    <div class="section-top">
+      <div>
+        <p class="eyebrow">Our services</p>
+        <h2 style="margin-top:14px">MOT's, servicing,<br>repairs &amp; tyres</h2>
+      </div>
+      <a href="#extras" class="btn btn-ghost">List of full services</a>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="p-mot" id="t-mot">MOT's</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-service" id="t-service">General Servicing</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-repairs" id="t-repairs">All Repairs</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-tyres" id="t-tyres">Tyres</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-mot" aria-labelledby="t-mot">
+      <div class="media"><img src="images/about-3.jpg" alt="MOT test being carried out in the MARS test bay"><div class="price"><small>MOT tests from</small><b>£49.50</b></div></div>
+      <div class="text">
+        <h3>DVSA-approved class 4 test site</h3>
+        <p>To ensure that your vehicle meets safety and environmental standards, it is essential to have it undergo an MOT test. This test examines various aspects of your vehicle to ensure it meets the required standards.</p>
+        <p>At MARS, we have five highly trained MOT testers who receive yearly training to keep up to date with the latest testing methods. We also recently installed a state-of-the-art one-man test bay to further enhance our testing capabilities. As a DVSA-approved class 4 test site (Test Site Number: 10659), we offer MOT tests starting from just £49.50.</p>
+        <p>To make things more convenient for you, we provide waiting slots that can be booked in advance. Our location near the town centre also allows you to go shopping while your test is being carried out. Additionally, we offer FREE MOT retests to ensure that any issues that arise are promptly addressed.</p>
+        <a href="#estimate" class="btn btn-primary">Book your MOT</a>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-service" aria-labelledby="t-service" hidden>
+      <div class="media"><img src="images/about-1.jpg" alt="Technician servicing a car engine"><div class="price"><small>Servicing from</small><b>£89</b></div></div>
+      <div class="text">
+        <h3>Keep that car healthy!</h3>
+        <p>At M.A.R.S., we pride ourselves on being able to service all makes and models of vehicles. Additionally, we offer servicing options that cater to a variety of needs and budgets, starting from just £89. For an oil and filter change is now between £120-£150.</p>
+        <p>If your vehicle is still under manufacturer warranty, you can rest assured that we use only genuine parts to ensure your warranty remains valid. To keep your car performing at its best, we recommend servicing it annually, regardless of whether it has reached its mileage limit or not.</p>
+        <p>Don't let your car's health suffer - contact us now for a quote and to schedule your next servicing appointment.</p>
+        <a href="#estimate" class="btn btn-primary">Get a quote</a>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-repairs" aria-labelledby="t-repairs" hidden>
+      <div class="media"><img src="images/home-4.jpg" alt="Diagnostic equipment connected to an engine"><div class="price"><small>All repairs come with</small><b>12-month warranty</b></div></div>
+      <div class="text">
+        <h3>We do it all!</h3>
+        <p>At our garage, we offer a comprehensive range of repair services to keep your vehicle in top shape. Some of the repairs we offer include exhaust repairs, suspension and steering work, alternator replacements, cooling system repairs, and cambelt and clutch replacements.</p>
+        <p>We also provide battery replacements with a 3-year warranty, air conditioning repairs (all of our technicians are qualified to handle the gas), and brake repairs. In addition, we have the expertise to tackle electrical issues, starter motor repairs, non-start and recovery services, and breakdowns.</p>
+        <p>To give you peace of mind, all of our repairs come with a 12-month warranty. Contact us today to schedule your repair appointment and keep your vehicle running smoothly.</p>
+        <a href="#estimate" class="btn btn-primary">Schedule a repair</a>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-tyres" aria-labelledby="t-tyres" hidden>
+      <div class="media"><img src="images/home-1.jpg" alt="Racks of new tyres in the MARS workshop"><div class="price"><small>Proud fitter for</small><b>blackcircles.com</b></div></div>
+      <div class="text">
+        <h3>Keep good contact with the road!</h3>
+        <p>The contact between your car and the road is vital to ensure your safety on the road, and the tyres are the key components that make this possible. At our garage, we understand the importance of quality tyres and the role they play in keeping you safe. That's why we offer a wide range of tyres in various sizes, types, and brands to suit your budget and preferences.</p>
+        <p>Our expert technicians are always on hand to provide professional advice on the best tyres for your vehicle and fit them for you while you wait. We stock and receive deliveries of tyres throughout the day to ensure we always have the right tyres available when you need them.</p>
+        <p>As a proud fitter for blackcircles.com, we offer a hassle-free online tyre ordering service, where you can order and pay for your tyres online and have them fitted by us at your convenience. Choose from our budget to premium quality tyres, and drive with confidence knowing you have the best tyres for your vehicle.</p>
+        <a href="#estimate" class="btn btn-primary">Ask about tyres</a>
+      </div>
+    </div>
+
+    <div class="extras" id="extras">
+      <div class="extra reveal">
+        <span class="tag">From £54</span>
+        <h3>Wheel Alignment</h3>
+        <p>Wheel alignment is something that is very overlooked, usual signs that your vehicle is out of alignment are vehicle drifting, or tyres wearing unevenly.</p>
+        <p>We own a state of the art computerised four wheel alignment system, that will provide you with before and after printouts to show where your vehicle needed adjusting.</p>
+      </div>
+      <div class="extra reveal">
+        <span class="tag">From £54</span>
+        <h3>Air Conditioning</h3>
+        <p>Whether it's the warmer months or colder months your vehicle uses the air conditioning system more than you think.</p>
+        <p>Here at MARS we have machines for both the new and old systems. The older system is a gas called r134a which is the most common. From 2014/2015 a newer more expensive gas is called 1234yf. If you're unsure on what system you have please contact us and we will let you know. It's recommended that systems are serviced and regassed every two years.</p>
+      </div>
+      <div class="extra reveal">
+        <span class="tag">2 mins from town</span>
+        <h3>Waiting Room</h3>
+        <p>Sit and wait for your car, relax or if you want you can pop into town as it is only 2 minutes away!</p>
+        <img src="images/services-1.jpg" alt="The MARS customer waiting room" style="border-radius:12px;margin-top:auto;aspect-ratio:4/3;object-fit:cover">
+      </div>
+      <div class="extra reveal">
+        <span class="tag">Extras</span>
+        <h3>Diagnostics and Other Services</h3>
+        <ul>
+          <li>We offer free collection and delivery service from your home or work.</li>
+          <li>Recovery.</li>
+          <li>Used car vehicle check over prior to purchase.</li>
+          <li>Seasonal checks free of charge.</li>
+          <li>Adblue stocked.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-copy reveal">
+      <p class="eyebrow">About us</p>
+      <p class="lead">Matts Auto Repair Services is a family-run independent garage situated in the heart of Bishops Stortford, driven by a strong passion for quality service. Our premises on Bryan Road CM23 2HR have been a staple of the community for the past ten years, building a sterling reputation based on word-of-mouth referrals and loyal customers.</p>
+      <p>Our team of four highly skilled technicians possesses over 95 years of combined experience in the motor trade, including those who have attained the prestigious master technician level with Ford and Peugeot, spanning across multiple well-known brands.</p>
+      <p>We pride ourselves on being an approved MOT station by the DVSA, making use of cutting-edge testing technology to ensure thorough on-site inspections without the need for external testing. Every vehicle that comes through our doors is treated with the utmost care and respect, as if it were our very own. Our many glowing 5-star customer reviews on numerous platforms serve as a testament to our unwavering commitment to excellence.</p>
+    </div>
+    <div class="about-gallery">
+      <img class="reveal" src="images/about-2.jpg" alt="Two MARS technicians inspecting a car on a lift" style="object-position:55% center">
+      <img class="reveal" src="images/home-2.jpg" alt="Technician running diagnostics inside a car">
+      <img class="reveal" src="images/home-3.jpg" alt="Close-up of a repair on an electrical component">
+    </div>
+  </section>
+
+  <!-- CORE VALUES -->
+  <section class="dark">
+    <div class="section-top">
+      <div>
+        <span class="pill">Our core values</span>
+        <h2 style="margin-top:20px">What drives every job<br>we sign off</h2>
+      </div>
+    </div>
+    <div class="values">
+      <div class="value reveal"><span class="num">01</span><h3>Delivering the Best</h3><p>We make sure that every job is checked, double checked... and then checked again before we sign it off.</p></div>
+      <div class="value reveal"><span class="num">02</span><h3>Car Lovers</h3><p>All of our Bishops Stortford mechanics are car enthusiasts and it reflects in our work.</p></div>
+      <div class="value reveal"><span class="num">03</span><h3>The Best Service</h3><p>Our management team look closely at our customer service and love to hear feedback so they can continue to provide the best auto repairs in Bishops Stortford.</p></div>
+      <div class="value reveal"><span class="num">04</span><h3>Customer Loyalty</h3><p>We think if we provide the best service at competitive prices that our customers will always choose us as their mechanics based in Bishops Stortford.</p></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews reveal">
+    <div class="g">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+      <div>
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <h3>Google Reviews</h3>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="https://www.google.com/search?q=Matts+Auto+Repair+Services+Bishops+Stortford+reviews" target="_blank" rel="noopener">Read our reviews</a>
+  </section>
+
+  <!-- ESTIMATE + CONTACT -->
+  <section class="contact" id="location">
+    <div class="form-card reveal" id="estimate">
+      <span class="pill">Quick estimate</span>
+      <h2>Too busy to come in? Want to book your MOT?</h2>
+      <p>Fill in the form and we’ll come right back to you.</p>
+      <form id="estimate-form" novalidate>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-reg">Vehicle Reg</label><input id="f-reg" name="reg" style="text-transform:uppercase"></div>
+        <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message"></textarea></div>
+        <div class="field full">
+          <label>Image</label>
+          <label class="upload"><input type="file" name="image" accept="image/*" id="f-img"><span class="btn btn-ghost-dark">Upload</span><span id="f-img-name">Add a photo of the issue (optional)</span></label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-red">Send message</button>
+          <span class="form-msg" id="form-msg" role="status"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="info">
+      <div class="info-card reveal">
+        <h3>Contact us</h3>
+        <address>Matts Auto Repair Services<br>Bryan Road, Bishops Stortford<br>CM23 2HR</address>
+        <div class="info-links">
+          <a href="tel:01279653494"><span>01279 653494</span><span>→</span></a>
+          <a href="mailto:info@mattsautorepairservices.co.uk"><span>info@mattsautorepairservices.co.uk</span><span>→</span></a>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <h3>Opening hours <span class="status" id="status">—</span></h3>
+        <div class="hours">
+          <div><span>Mon - Fri</span><span>8:00 am - 5:30 pm</span></div>
+          <div><span>Sat - Sun</span><span class="closed">Closed</span></div>
+        </div>
+      </div>
+      <div class="map reveal">
+        <iframe title="Map showing Matts Auto Repair Services on Bryan Road, Bishops Stortford" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Matts+Auto+Repair+Services,+Bryan+Road,+Bishops+Stortford+CM23+2HR&z=15&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-top">
+      <p class="big">Family run, local and independent. Call us on <a href="tel:01279653494">01279 653494</a></p>
+      <ul class="foot-nav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#estimate">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>Proudly Powered by Worldie.ai</span>
+      <div class="socials" aria-label="Get social">
+        <a href="https://facebook.com/MattsAutoRepairServices" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v1.9H8v3.2h2.6V22H14v-10.3h2.6l.4-3.2z"/></svg></a>
+        <a href="https://instagram.com/mars_mattsautorepairservices" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zM17 5.8a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 7.1c-.1-1.6-.4-3-1.6-4.2S17.7 1.3 16.1 1.2C14.4 1.1 9.6 1.1 7.9 1.2c-1.6.1-3 .4-4.2 1.6S2.1 5.5 2 7.1C1.9 8.8 1.9 15.2 2 16.9c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.7.1 6.5.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.7.1-8.1.1-9.8zm-2.1 11.6a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.6.4s-4.4.1-5.6-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.2 3.2 0 0 1 1.8-1.8C8 5 11 5.1 12.4 5.1s4.4-.1 5.6.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // mobile nav
+  const nav = document.querySelector('.nav');
+  const toggle = document.querySelector('.nav-toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open'); toggle.setAttribute('aria-expanded', false);
+  }));
+
+  // service tabs
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }));
+
+  // open / closed status (UK time, Mon–Fri 8:00–17:30)
+  (function () {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
+      .formatToParts(new Date()).reduce((o, p) => (o[p.type] = p.value, o), {});
+    const mins = (+parts.hour % 24) * 60 + +parts.minute;
+    const open = !['Sat', 'Sun'].includes(parts.weekday) && mins >= 480 && mins < 1050;
+    const el = document.getElementById('status');
+    el.textContent = open ? 'Open now' : 'Closed now';
+    el.classList.toggle('open', open);
+  })();
+
+  // upload filename
+  document.getElementById('f-img').addEventListener('change', e => {
+    const f = e.target.files[0];
+    document.getElementById('f-img-name').textContent = f ? f.name : 'Add a photo of the issue (optional)';
+  });
+
+  // form (front-end only: connect to your form handler / email service)
+  document.getElementById('estimate-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = e.target, msg = document.getElementById('form-msg');
+    if (!form.name.value.trim() || !form.email.checkValidity() || !form.email.value) {
+      msg.textContent = 'Please add your name and a valid email.';
+      return;
+    }
+    msg.textContent = 'Thank you for contacting us. We will get back to you as soon as possible.';
+    form.reset();
+    document.getElementById('f-img-name').textContent = 'Add a photo of the issue (optional)';
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
